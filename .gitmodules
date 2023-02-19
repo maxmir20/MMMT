@@ -1,0 +1,9 @@
+[submodule "RecipEase"]
+	path = RecipEase
+	url = https://github.com/maxmir20/RecipEase.git
+[submodule "Time2"]
+	path = Time2
+	url = https://github.com/maxmir20/Time2.git
+[submodule "Rota"]
+	path = Rota
+	url = https://github.com/maxmir20/RotaScheduler.git
