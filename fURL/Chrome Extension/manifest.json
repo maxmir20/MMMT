@@ -1,0 +1,25 @@
+{
+    "name": "fURL",
+    "version": "0.1.0",
+    "manifest_version": 3,
+
+    "description": "An addon that will retrieve the url and truncate any UTM or other content that might make it messy ",
+    "icons": {
+      "128": "icons/icon-128.png"
+    },
+    "background": {
+      "service_worker": "service-worker.js"
+    },
+    "permissions": [
+        "tabs",
+        "activeTab",
+        "clipboardWrite",
+        "clipboardRead",
+        "scripting"
+    ],
+    "action": {
+      "default_icon": "icons/icon-38.png",
+      "default_title": "fURL",
+      "default_popup": "popup/popup.html"
+    }
+}
