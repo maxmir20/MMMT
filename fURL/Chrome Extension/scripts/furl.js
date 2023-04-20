@@ -3,23 +3,24 @@
 // V1 on click
 // Stage 1 Copy URL and trim UTM (edge cases for http and outmost)
 
-function copyURL(){
-//  access the href so we can get the URL (replace with what's in clipboard)
+function copyURL(url){
+
+    //  access the href so we can get the URL (replace with what's in clipboard)
     console.log("starting copyURL");
-    let url = window.location.href;
+    console.log(url);
+
+//    let url = window.location.href;
 
 //    check if we have a valid url
     let copyFrom = document.createElement('input');
     copyFrom.type = 'url';
     copyFrom.value = url;
-    console.log(copyFrom.value);
     if (!copyFrom.checkValidity()) {
-        console.log("copied value isn't a url");
+        console.log("copied value isn't a url: " + copyFrom.value);
         return;
     } else {
         console.log("copied value is a url: " + copyFrom.value)
     }
-
 //  trim the url of any utm elements
     copyFrom.value = trimURL(url);
     console.log("trimmed_url is " + copyFrom.value);
@@ -37,15 +38,6 @@ function copyURL(){
     copyFrom.blur();
     document.body.removeChild(copyFrom);
 
-
-//    copyFrom = document.createElement("textarea");
-//    copyFrom.textContent = trimmed_url;
-//    let copyFrom = document.createElement("input");
-//    copyFrom.type = 'url;'
-//    copyFrom.value = trimmed_url;
-//    console.log(copyFrom)
-
-
 ////    copy to clipboard with console log + permission (NOT WORKING)
 //    await navigator.permissions.query({name: "clipboard-write"}).then((result) => {
 //      if (result.state === "granted" || result.state === "prompt") {
@@ -59,12 +51,6 @@ function copyURL(){
 //    });
 
 }
-
-
-// V2 monitor clipboard?
-// Stage 3: if UTM in clipboard, read and then edit?
-
-// Stage 4, link to website db?
 
 function trimURL(url){
 //    const url = tabs[0].url
@@ -101,17 +87,74 @@ function trimURL(url){
   }
 
 
-function isURL(text){
+//Option 1: Change Copy Dynamically
+//Pros: Don't need readtext permission, will work outside of browser
+//Cons: Doesn't trigger for Copy Link Address (security issues), Don't work for href yet
 
+
+function readClipboard(){
+    console.log("creating event listener for copy");
+
+    let copyFrom = document.createElement('input');
+    copyFrom.type = 'url';
+
+    window.addEventListener("copy", (event) => {
+        const selection = window.getSelection();
+        console.log(selection.toString());
+        event.clipboardData.setData("text/plain",
+        trimURL(selection.toString()));
+
+        event.preventDefault();
+    });
+
+    console.log("creating event listener for right click");
+
+    window.addEventListener("contextmenu", (event) => {
+//        Check that right click is clicked
+        if (event.button !== 2) {
+            return;
+        }
+        console.log("detected right click");
+        const selection = window.getSelection();
+        console.log("old selection");
+        console.log(selection);
+
+        selection.removeAllRanges();
+
+        const range = document.caretRangeFromPoint(event.clientX, event.clientY);
+        range.expand('word');
+
+        selection.addRange(range);
+        console.log("new selection");
+        console.log(selection);
+
+        let i = 0;
+        let currNode = selection.anchorNode.parentNode
+        while (currNode) {
+            console.log("currNode is");
+            console.log(currNode);
+            if (currNode.href) {
+                console.log("found href");
+                setTimeout(function () {
+                    console.log("checking if document is focused");
+                    if (document.hasFocus()) {
+                        copyURL(currNode.href);
+                    } else {
+                        console.log("document not in focus");
+                    }
+                }, 3000);
+//                copyURL(currNode.href);
+                break;
+            } else {
+            currNode = currNode.parentNode;
+//            i += 1;
+            }
+        }
+
+//        console.log(selection.getRangeAt(0));
+    });
 }
+console.log("running script");
+readClipboard();
 
-//// Example
-//const url = getURL()
-//(async()=>{
-//    await copyURL();
-//})();
-copyURL();
-//chrome.tabs
-//    .query({currentWindow: true, active: true})
-//    .then(copyURL, onError);
     

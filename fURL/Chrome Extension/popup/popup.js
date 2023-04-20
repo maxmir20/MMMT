@@ -1,3 +1,5 @@
+//import { copyURL } from '../scripts/furl.js';
+
 async function getCurrentTab(){
     let queryOptions = {active: true, lastFocusedWindow: true};
     let [tab] = await chrome.tabs.query(queryOptions);
@@ -16,6 +18,9 @@ function reportExecuteScriptError(error) {
     chrome.tabs.update({ active: true });
 
     let tabID = await getCurrentTab();
+//    let address_bar = window.location.href;
+//    console.log(address_bar);
+//    copyURL(address_bar);
 
     chrome.scripting.executeScript({
         target : {tabId: tabID, allFrames : true },
