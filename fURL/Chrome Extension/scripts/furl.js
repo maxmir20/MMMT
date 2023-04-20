@@ -157,4 +157,162 @@ function readClipboard(){
 console.log("running script");
 readClipboard();
 
-    
+// V2 monitor clipboard?
+// Stage 3: if UTM in clipboard, read and then edit?
+
+// Stage 4, link to website db?
+
+
+
+//works but requires user permission
+//    read clipboard
+//    navigator.permissions.query({name: "clipboard-read"}).then((result) => {
+//      if (result.state === "granted" || result.state === "prompt") {
+//        window.focus();
+//        clipboard = navigator.clipboard.readText().then(() => {
+//            console.log("successfully read value to clipboard: " + clipboard);
+//        }, (error) => {
+//            console.log("failed to read value to clipboard: " + error);
+//        });
+//      }
+//    });
+
+
+
+//Failed attempts
+//function updateClipboard(){
+//    let copyFrom = document.createElement('input');
+//    copyFrom.type = 'url';
+//    copyFrom.value = window.clipboardData.getData("text/plain");
+//    if (!copyFrom.checkValidity()) {
+//        console.log("copied value isn't a url: " + copyFrom.value);
+//        return;
+//    } else {
+//        console.log("copied value is a url: " + copyFrom.value)
+//    }
+//}
+
+//  contextmenu event listener that didn't work
+//    window.addEventListener("contextmenu", (event) => {
+////        check if we have a link in the selection
+//        console.log("grabbing anchorNode and focusNode");
+//        const selection = window.getSelection();
+//        console.log(selection.anchorNode);
+//        console.log(selection.focusNode);
+//        if (selection.anchorNode) {
+//            console.log(selection.anchorNode);
+//        } else {
+//            console.log("can't find anchornode for selection")
+//        }
+//        const range = selection.getRangeAt(0);
+//        if (range) {
+//            if (range.anchorNode){
+//                if (range.anchorNode.parentNode){
+//                   const parent_href = range.anchorNode.parentNode.href;
+//                   console.log("parent href is " + parent_href );
+//                }
+//                const anchor_href = range.anchorNode.href;
+//                console.log("anchor_href is " + anchor_href);
+//            } else {
+//                console.log("can't find anchor node")
+//            }
+//
+//            if (range.startContainer.parentNode.tagName === 'A') {
+//            console.log("alternate way of grabbing anchor tag");
+//            console.log("StartContainer " + range.startContainer.parentNode.href);
+//
+//            } else if (range.endContainer.parentNode.tagName === 'A'){
+//            console.log("alternate way of grabbing anchor tag");
+//            console.log("EndContainer " + range.endContainer.parentNode.href);
+//
+//            }
+//        } else {
+//            console.log("something went wrong")
+//        }
+
+
+
+//        console.log(selection.toString());
+//        assess whether there's only one URL in parent node
+
+//        self testing indicates it takes about 1-2 seconds to copy a link if there's no dilly-dallying
+//        setTimeout(copyURL, 4000, selection.toString())
+//    });
+
+//    window.addEventListener("focus", async function(event) {
+//         await navigator.permissions.query({name: "clipboard-read"}).then((result) => {
+//            if (result.state === "granted" || result.state === "prompt") {
+//                copyFrom.value = navigator.clipboard.readText();
+//                if (!copyFrom.checkValidity()) {
+//                    console.log("copied value isn't a url: " + copyFrom.value);
+//                    return;
+//                } else {
+//                    console.log("copied value is a url: " + copyFrom.value)
+//        //            add set for identified urls already
+//                    copyFrom.value = trimURL(copyFrom.value);
+//                    console.log("trimmed_url is " + copyFrom.value);
+//
+//                    document.body.appendChild(copyFrom);
+//
+//                    copyFrom.select()
+//                    document.execCommand('copy');
+//
+//                    copyFrom.blur();
+//                    document.body.removeChild(copyFrom);
+//
+//                    }
+//            }
+//        });
+//    }, false);
+
+//Option 2: Paste Dynamically
+//Pros: Don't need readtext permission, avoids Copy Link Address problem
+//Cons: Open windows seem to throw it off/doesn't work on certain sites yet (Gmail, FB), won't work outside browser
+
+//function pasteClipboard(){
+//
+////    let copyFrom = document.createElement('input');
+////    copyFrom.type = 'url';
+//
+//    window.addEventListener("paste", (event) => {
+//        event.preventDefault();
+//
+//        let paste = (event.clipboardData || window.clipboardData).getData("text/plain");
+//        let trimmed = trimURL(paste);
+////        const selection = document.getSelection();
+////        if (!selection.rangeCount) return false;
+////        selection.deleteFromDocument();
+////
+//
+////        let copyFrom = document.createElement('input');
+////        copyFrom.type = 'url';
+////        copyFrom.value = trimmed;
+////
+////        document.body.appendChild(copyFrom);
+////
+////        copyFrom.select()
+////        document.execCommand('copy');
+////
+////        copyFrom.blur();
+////        document.body.removeChild(copyFrom);
+////
+//
+//        setTimeout(function() {
+//            document.execCommand("insertHTML", false, trimmed);
+//            }, 50);
+////        selection.collapseToEnd();
+////        event.preventDefault();
+//
+//
+////        const selection = document.getSelection();
+////        console.log(selection.toString());
+////        if (!selection.rangeCount) return false;
+////        selection.deleteFromDocument();
+////        selection.getRangeAt(0).insertNode(document.createTextNode(trimmed));
+////        selection.collapseToEnd();
+//        event.preventDefault();
+//
+//        });
+//
+//
+//    }
