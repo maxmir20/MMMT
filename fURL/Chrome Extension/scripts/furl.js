@@ -120,6 +120,7 @@ function readClipboard(){
                 setTimeout(function () {
                     console.log("checking if document is focused");
                     if (document.hasFocus()) {
+                        console.log(currNode.href);
                         copyURL(currNode.href);
                     } else {
                         console.log("document not in focus");

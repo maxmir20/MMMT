@@ -1,4 +1,4 @@
-function copyURL(){
+function copyURL2(){
 
     let url = window.location.href;
 
@@ -59,4 +59,4 @@ function trimURL(url){
 }
 
 console.log("copying address bar");
-copyURL();
+copyURL2();

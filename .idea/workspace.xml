@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="367d3137-cacb-4186-8222-26f530c0016a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/fURL/Chrome Extension/scripts/copy_address_bar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fURL/Chrome Extension/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/fURL/Chrome Extension/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fURL/Chrome Extension/popup/popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/fURL/Chrome Extension/popup/popup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fURL/Chrome Extension/popup/popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/fURL/Chrome Extension/popup/popup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fURL/Chrome Extension/scripts/copy_address_bar.js" beforeDir="false" afterPath="$PROJECT_DIR$/fURL/Chrome Extension/scripts/copy_address_bar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fURL/Chrome Extension/scripts/furl.js" beforeDir="false" afterPath="$PROJECT_DIR$/fURL/Chrome Extension/scripts/furl.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
