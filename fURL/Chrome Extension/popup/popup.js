@@ -1,4 +1,3 @@
-//import { copyURL } from '../scripts/furl.js';
 
 async function getCurrentTab(){
     let queryOptions = {active: true, lastFocusedWindow: true};
@@ -6,14 +5,6 @@ async function getCurrentTab(){
     return tab.id;
 }
 
-function closeWindow(){
-    window.close()
-}
-
-function reportExecuteScriptError(error) {
-    document.querySelector("#error-content").classList.remove("hidden");
-    console.error(`Failed to capture URL: ${error}`);
-  }
 (async()=> {
     chrome.tabs.update({ active: true });
 
@@ -21,6 +12,6 @@ function reportExecuteScriptError(error) {
 
     chrome.scripting.executeScript({
         target : {tabId: tabID, allFrames : true },
-        files: ["scripts/copy_address_bar.js"]
+        files: ["scripts/popup_script.js"]
         });
 })();
