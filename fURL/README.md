@@ -15,10 +15,12 @@ If you would like to copy the url address bar, just click the fURL browser icon 
 
 
 Browsers:
--Chrome
+
+-[Chrome](https://chrome.google.com/webstore/detail/furl/dbhadidpkhleeifeiablhhigmmpeggac?hl=en&authuser=0)
+
 -Firefox (Coming soon!)
 
-Medium Writeup (Coming soon!)
+[Medium Writeup](https://medium.com/@m_93939/building-a-browser-extension-to-remove-utm-parameters-from-urls-considerations-and-lessons-learned-707fd13d6e53)
 
 Languages Used:
 - Javascript
